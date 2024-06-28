@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotNull;
 
 import java.util.UUID;
 
-public class CreateCarValidation {
+public class CarValidation {
     @NotNull(message = "O modelo_id é obrigatorio!")
     public UUID modelo_id;
     @NotNull(message = "O capo ano é obrigatorio!")

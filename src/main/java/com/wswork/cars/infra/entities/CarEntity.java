@@ -53,13 +53,13 @@ public class CarEntity {
 
     public static CarEntity toPersistence(Car domain){
         return CarEntity.builder()
-                .id(domain.id())
-                .modelo(CarModelEntity.toPersistence(domain.modelo()))
-                .ano(domain.ano())
-                .combustivel(domain.combustivel())
-                .timestamp_cadastro(domain.timestamp_cadastro())
-                .cor(domain.cor())
-                .num_portas(domain.num_portas())
+                .id(domain.getId())
+                .modelo(CarModelEntity.toPersistence(domain.getModelo()))
+                .ano(domain.getAno())
+                .combustivel(domain.getCombustivel())
+                .timestamp_cadastro(domain.getTimestamp_cadastro())
+                .cor(domain.getCor())
+                .num_portas(domain.getNum_portas())
                 .build();
     }
 }
