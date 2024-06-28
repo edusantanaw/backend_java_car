@@ -1,4 +1,4 @@
-package com.wswork.cars.application.usecases.car;
+package com.wswork.cars.application.interactor.car;
 
 import com.wswork.cars.application.dto.CreateCarDto;
 import com.wswork.cars.application.gateway.CreateGateway;

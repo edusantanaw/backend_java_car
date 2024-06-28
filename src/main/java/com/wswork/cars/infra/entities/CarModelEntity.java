@@ -28,8 +28,8 @@ public class CarModelEntity {
     @ManyToOne()
     @JoinColumn(name = "marca_id", nullable = false)
     CarBrandEntity marca;
-
-    UUID marca_id;
+    @Column()
+    Integer deleted = 0;
 
     @OneToMany(mappedBy = "modelo")
     List<CarEntity> cars;

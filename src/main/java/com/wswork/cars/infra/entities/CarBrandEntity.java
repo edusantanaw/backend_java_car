@@ -22,7 +22,8 @@ public class CarBrandEntity {
     UUID id;
     @Column()
     String nome_marca;
-
+    @Column()
+    Integer deleted = 0;
     @OneToMany()
     List<CarModelEntity> carModels;
 

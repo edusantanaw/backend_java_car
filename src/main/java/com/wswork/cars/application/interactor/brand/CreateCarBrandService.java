@@ -1,4 +1,4 @@
-package com.wswork.cars.application.usecases.brand;
+package com.wswork.cars.application.interactor.brand;
 
 import org.springframework.stereotype.Service;
 

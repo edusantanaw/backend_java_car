@@ -1,5 +1,11 @@
 package com.wswork.cars.infra.gateway;
 
-public interface CrudGateway<DomainEntity> {
-    public abstract DomainEntity  create(DomainEntity data);
+import com.wswork.cars.application.gateway.*;
+
+public interface CrudGateway<DomainEntity>
+        extends CreateGateway<DomainEntity>,
+        LoadByIdGateway<DomainEntity>,
+        DeleteGateway<DomainEntity>,
+        UpdateGateway<DomainEntity>,
+        LoadAllGateway<DomainEntity> {
 }

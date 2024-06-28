@@ -35,6 +35,9 @@ public class CarEntity {
     @ManyToOne()
     @JoinColumn(name = "modelo_id", nullable = false)
     CarModelEntity modelo;
+    @Column()
+    Integer deleted = 0;
+
 
     public static Car toDomain(CarEntity entity) {
         return new Car(
