@@ -48,6 +48,7 @@ public class CarGateway implements  CrudGateway<Car>, FindByModeloGateway<Car> {
         return CarEntity.toDomain(updated);
     }
 
+    @Override
     public List<Car> findByModelo(UUID modelo_id) {
         List<CarEntity> cars = repository.findByModeloId(modelo_id);
         return cars.stream().map(CarEntity::toDomain).toList();
