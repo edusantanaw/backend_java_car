@@ -10,4 +10,5 @@ import java.util.UUID;
 @Service
 public interface CarRepository extends CrudRepository<CarEntity, UUID> {
     List<CarEntity> findByDeleted(Integer deleted);
+    List<CarEntity> findByModeloId(UUID modelo_id);
 }

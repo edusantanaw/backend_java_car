@@ -1,17 +1,19 @@
 package com.wswork.cars.infra.gateway;
 
+import com.wswork.cars.application.gateway.FindByModeloGateway;
 import com.wswork.cars.domain.entities.Car;
 import com.wswork.cars.infra.entities.CarEntity;
 import com.wswork.cars.infra.repository.CarRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
 @AllArgsConstructor
-public class CarGateway implements  CrudGateway<Car> {
+@Service
+public class CarGateway implements  CrudGateway<Car>, FindByModeloGateway<Car> {
     private CarRepository repository;
 
     public Car create(Car data){
@@ -44,5 +46,10 @@ public class CarGateway implements  CrudGateway<Car> {
         CarEntity car = CarEntity.toPersistence(data);
         CarEntity updated = repository.save(car);
         return CarEntity.toDomain(updated);
+    }
+
+    public List<Car> findByModelo(UUID modelo_id) {
+        List<CarEntity> cars = repository.findByModeloId(modelo_id);
+        return cars.stream().map(CarEntity::toDomain).toList();
     }
 }

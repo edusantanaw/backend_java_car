@@ -4,8 +4,10 @@ import com.wswork.cars.infra.entities.CarBrandEntity;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
 public interface CarBrandRepository extends CrudRepository<CarBrandEntity, UUID> {
+    List<CarBrandEntity> findByDeleted(Integer deleted);
 }

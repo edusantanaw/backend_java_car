@@ -13,7 +13,6 @@ public class LoadAllCarInteractor {
     }
 
     public List<Car> loadAll() {
-        List<Car> cars = repository.loadAll();
-        return cars;
+        return repository.loadAll();
     }
 }

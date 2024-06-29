@@ -47,7 +47,7 @@ class CarDomainEntityTests {
         CarBrand carBrand = new CarBrand(UUID.randomUUID(), "test");
         CarModel carModel = new CarModel(UUID.randomUUID(), carBrand, "test", BigDecimal.valueOf(1000));
         Car car = new Car(carModel, 1900, "#c3c3c3", 4, "diesel", UUID.randomUUID(), null);
-        Assertions.assertEquals(car.ano(), 1900);
-        Assertions.assertEquals(car.combustivel(), "DIESEL");
+        Assertions.assertEquals(car.getAno(), 1900);
+        Assertions.assertEquals(car.getCombustivel(), "DIESEL");
     }
 }
