@@ -7,6 +7,7 @@ import com.wswork.cars.controllers.dtos.LoadManyCarModelsDto;
 import com.wswork.cars.controllers.validation.CarModelValidation;
 import com.wswork.cars.domain.entities.Car;
 import com.wswork.cars.domain.entities.CarModel;
+import com.wswork.cars.domain.exceptions.EntityValidationException;
 import com.wswork.cars.domain.exceptions.NotFoundException;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;

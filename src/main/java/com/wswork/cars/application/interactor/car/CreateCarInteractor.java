@@ -5,6 +5,7 @@ import com.wswork.cars.application.gateway.CreateGateway;
 import com.wswork.cars.application.gateway.LoadByIdGateway;
 import com.wswork.cars.domain.entities.Car;
 import com.wswork.cars.domain.entities.CarModel;
+import com.wswork.cars.domain.exceptions.EntityValidationException;
 import com.wswork.cars.domain.exceptions.NotFoundException;
 
 import java.util.Optional;
@@ -18,7 +19,7 @@ public class CreateCarInteractor {
         this.carGateway = carGateway;
     }
 
-    public Car create(CreateCarDto data) throws NotFoundException {
+    public Car create(CreateCarDto data) throws NotFoundException, EntityValidationException {
         Optional<CarModel> carModel = carModelGateway.loadById(data.modelo_id());
         if(carModel.isEmpty()) throw new NotFoundException("Modelo de carro não encontrado!");
         Car car = carGateway.create(new Car(
@@ -27,7 +28,7 @@ public class CreateCarInteractor {
                 data.cor(),
                 data.num_portas(),
                 data.combustivel(),
-                null, null
+                 null
         ));
         return car;
     }

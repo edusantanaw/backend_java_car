@@ -20,6 +20,7 @@ public class CarModelGateway implements CrudGateway<CarModel>, FindByBrandGatewa
     @Override
     public CarModel create(CarModel data) {
         CarModelEntity carModel = CarModelEntity.toPersistence(data);
+        carModel.setDeleted(0);
         CarModelEntity createCarModel = repository.save(carModel);
         return CarModelEntity.toDomain(createCarModel);
     }

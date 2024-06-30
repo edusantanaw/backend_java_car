@@ -24,7 +24,7 @@ public class DeleteCarBrandInteractor {
         Optional<CarBrand> carBrand = repository.loadById(id);
         if(carBrand.isEmpty()) throw new NotFoundException("Marca não encontrada!");
         List<CarModel> carModels = carModelRepository.findByBrand(id);
-        if(carModels.isEmpty()) throw new DomainException("Delete todos os modelos vinculados a esta marca!");
+        if(!carModels.isEmpty()) throw new DomainException("Delete todos os modelos vinculados a esta marca!");
         repository.delete(carBrand.get());
         return "Marca deletada com sucesso!";
     }

@@ -6,6 +6,7 @@ import com.wswork.cars.application.interactor.car.*;
 import com.wswork.cars.controllers.dtos.LoadManyCarsDto;
 import com.wswork.cars.controllers.validation.CarValidation;
 import com.wswork.cars.domain.entities.Car;
+import com.wswork.cars.domain.exceptions.EntityValidationException;
 import com.wswork.cars.domain.exceptions.NotFoundException;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -27,7 +28,7 @@ public class CarController {
     private final LoadAllCarInteractor loadAllCarInteractor;
 
     @PostMapping()
-    public ResponseEntity<Car> createCar(@RequestBody() @Valid CarValidation data) throws NotFoundException {
+    public ResponseEntity<Car> createCar(@RequestBody() @Valid CarValidation data) throws NotFoundException, EntityValidationException {
         CreateCarDto carDto = new CreateCarDto(data.modelo_id, data.ano, data.cor, data.num_portas, data.combustivel);
         Car car = createCarInteractor.create(carDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(car);

@@ -2,6 +2,7 @@ package com.wswork.cars.infra.entities;
 
 import com.wswork.cars.domain.entities.Car;
 import com.wswork.cars.domain.entities.CarModel;
+import com.wswork.cars.domain.exceptions.EntityValidationException;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -35,11 +36,11 @@ public class CarEntity {
     @ManyToOne()
     @JoinColumn(name = "modelo_id", nullable = false)
     CarModelEntity modelo;
-    @Column()
+    @Column(columnDefinition = "integer default 0")
     Integer deleted = 0;
 
 
-    public static Car toDomain(CarEntity entity) {
+    public static Car toDomain(CarEntity entity)  {
         return new Car(
                 CarModelEntity.toDomain(entity.modelo),
                 entity.ano,

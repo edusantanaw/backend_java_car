@@ -2,6 +2,7 @@ package com.wswork.cars.infra.gateway;
 
 import com.wswork.cars.application.gateway.FindByModeloGateway;
 import com.wswork.cars.domain.entities.Car;
+import com.wswork.cars.domain.exceptions.EntityValidationException;
 import com.wswork.cars.infra.entities.CarEntity;
 import com.wswork.cars.infra.repository.CarRepository;
 import lombok.AllArgsConstructor;
@@ -16,8 +17,9 @@ import java.util.UUID;
 public class CarGateway implements  CrudGateway<Car>, FindByModeloGateway<Car> {
     private CarRepository repository;
 
-    public Car create(Car data){
+    public Car create(Car data) {
         CarEntity car = CarEntity.toPersistence(data);
+        car.setDeleted(0);
         CarEntity created = repository.save(car);
         return CarEntity.toDomain(created);
     }

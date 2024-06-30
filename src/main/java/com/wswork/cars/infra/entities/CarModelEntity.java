@@ -28,7 +28,7 @@ public class CarModelEntity {
     @ManyToOne()
     @JoinColumn(name = "marca_id", nullable = false)
     CarBrandEntity marca;
-    @Column()
+    @Column(columnDefinition = "integer default 0")
     Integer deleted = 0;
 
     @OneToMany(mappedBy = "modelo")
@@ -47,6 +47,7 @@ public class CarModelEntity {
         return CarModelEntity.builder()
                 .nome(domain.nome())
                 .id(domain.id())
+                .marca(CarBrandEntity.toPersistence(domain.marca_id()))
                 .valor_fipe(domain.valor_fipe())
                 .build();
     }

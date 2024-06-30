@@ -5,8 +5,8 @@ import com.wswork.cars.domain.entities.Car;
 import java.util.List;
 
 public class LoadManyCarsDto {
-    public List<Car> cars;
+    public List<CarResponseDto> cars;
     public LoadManyCarsDto(List<Car> carsList) {
-        cars = carsList;
+        cars = carsList.stream().map(CarResponseDto::new).toList();
     }
 }

@@ -26,11 +26,11 @@ public class CarBrandController {
 
     @PostMapping
     ResponseEntity<CarBrand> create(@RequestBody @Valid CarBrandValidation carBrandValidation) {
-        CarBrand carBrand = createCarBrandInteractor.create(carBrandValidation.nome);
+        CarBrand carBrand = createCarBrandInteractor.create(carBrandValidation.nome_marca);
         return ResponseEntity.status(HttpStatus.CREATED).body(carBrand);
     }
 
-    @GetMapping
+    @GetMapping()
     ResponseEntity<LoadManyCarBrandsDto> loadAll() {
         List<CarBrand> carBrands = loadAllCarBrandInteractor.loadAll();
         return ResponseEntity.status(HttpStatus.OK).body(new LoadManyCarBrandsDto(carBrands));
@@ -50,7 +50,7 @@ public class CarBrandController {
 
     @PutMapping(value = "{id}")
     ResponseEntity<CarBrand> update(@PathVariable UUID id, @RequestBody @Valid CarBrandValidation carBrandValidation) throws NotFoundException {
-        CarBrand carBrand = updateCarBrandInteractor.update(id, carBrandValidation.nome);
+        CarBrand carBrand = updateCarBrandInteractor.update(id, carBrandValidation.nome_marca);
         return ResponseEntity.status(HttpStatus.OK).body(carBrand);
     }
 

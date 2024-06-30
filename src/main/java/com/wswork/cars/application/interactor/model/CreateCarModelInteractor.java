@@ -5,6 +5,7 @@ import com.wswork.cars.application.gateway.CreateGateway;
 import com.wswork.cars.application.gateway.LoadByIdGateway;
 import com.wswork.cars.domain.entities.CarBrand;
 import com.wswork.cars.domain.entities.CarModel;
+import com.wswork.cars.domain.exceptions.EntityValidationException;
 import com.wswork.cars.domain.exceptions.NotFoundException;
 
 import java.util.Optional;

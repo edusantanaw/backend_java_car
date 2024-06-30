@@ -1,5 +1,6 @@
 package com.wswork.cars.config;
 
+import com.wswork.cars.domain.exceptions.DomainException;
 import com.wswork.cars.domain.exceptions.EntityValidationException;
 import com.wswork.cars.domain.exceptions.NotFoundException;
 import jakarta.validation.ValidationException;
@@ -18,6 +19,11 @@ public class ExceptionHandlerFilter {
     @ExceptionHandler({NotFoundException.class})
     private ResponseEntity<String> notFoundException(NotFoundException exception) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
+    }
+
+    @ExceptionHandler(DomainException.class)
+    private ResponseEntity<String> domainException(DomainException exception) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessage());
     }
 
     @ExceptionHandler(ValidationException.class)
