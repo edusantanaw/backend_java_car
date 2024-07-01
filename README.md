@@ -27,7 +27,7 @@ Infra: A pasta de infra é onde temos os nossos gateways, repositórios e as ent
 ![alt text](image-1.png)
 
 ## ROTEAMENTO
-O modelo de rotas seguem o seguinte padrão '/api/{model}/:id' ou '/api/{model}/:id'\
+O modelo de rotas seguem o seguinte padrão '/api/{model}' ou '/api/{model}/:id'\
 Exemplo:
 ```java
 @RestController("/api/car")
