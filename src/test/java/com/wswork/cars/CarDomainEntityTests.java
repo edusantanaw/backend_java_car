@@ -23,7 +23,7 @@ class CarDomainEntityTests {
         EntityValidationException exception = Assertions.assertThrowsExactly(
                 EntityValidationException.class,
                 () ->
-                        new Car(carModel, 1800, "#c3c3c3", 4, "DIESEL", UUID.randomUUID(), null)
+                        new Car(carModel, 1800, "#c3c3c3", 4, "DIESEL", null)
         );
         Assertions.assertEquals("O ano deve ser maior que 1870!", exception.getMessage());
     }
@@ -36,7 +36,7 @@ class CarDomainEntityTests {
         EntityValidationException exception = Assertions.assertThrowsExactly(
                 EntityValidationException.class,
                 () ->
-                        new Car(carModel, 1900, "#c3c3c3", 4, "fuel", UUID.randomUUID(), null)
+                        new Car(carModel, 1900, "#c3c3c3", 4, "fuel", null)
         );
         Assertions.assertEquals("O tipo de combustivel é invalido!", exception.getMessage());
     }
