@@ -4,6 +4,7 @@
 O padrão utilizado busca criar um sistema com baixo nível de acoplamento, ou seja, a aplicação foi dividida em camadas, buscando ter responsabilidades únicas. 
 
 Exemplo: 
+
 ![alt text](image.png)
 ### O quê cada camada significa?
 Controller: O controller é responsável por ser a porta de entrada na nossa aplicação, ou seja, ele recebe os dados e redireciona para camadas mais internas. Após os dados serem processados, o controller retorna o resultado para o cliente.
