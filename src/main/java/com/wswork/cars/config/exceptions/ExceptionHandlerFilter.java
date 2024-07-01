@@ -1,4 +1,4 @@
-package com.wswork.cars.config;
+package com.wswork.cars.config.exceptions;
 
 import com.wswork.cars.domain.exceptions.DomainException;
 import com.wswork.cars.domain.exceptions.EntityValidationException;

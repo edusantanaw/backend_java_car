@@ -18,7 +18,6 @@ public class CarBrandGateway implements CrudGateway<CarBrand> {
     @Override
     public CarBrand create(CarBrand data) {
         CarBrandEntity carEntity = CarBrandEntity.toPersistence(data);
-        carEntity.setDeleted(0);
         CarBrandEntity createdCar = repository.save(carEntity);
         System.out.println(createdCar.getDeleted());
         return CarBrandEntity.toDomain(createdCar);

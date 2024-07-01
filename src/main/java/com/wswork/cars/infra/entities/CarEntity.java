@@ -30,8 +30,7 @@ public class CarEntity {
     String combustivel;
     @Column(nullable = false)
     Integer num_portas;
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "timestamp_cadastro")
+    @Column(name = "timestamp_cadastro", updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     Date timestamp_cadastro;
     @ManyToOne()
     @JoinColumn(name = "modelo_id", nullable = false)
@@ -58,9 +57,10 @@ public class CarEntity {
                 .modelo(CarModelEntity.toPersistence(domain.getModelo()))
                 .ano(domain.getAno())
                 .combustivel(domain.getCombustivel())
-                .timestamp_cadastro(domain.getTimestamp_cadastro())
                 .cor(domain.getCor())
                 .num_portas(domain.getNum_portas())
+                .timestamp_cadastro(new Date())
+                .deleted(0)
                 .build();
     }
 }

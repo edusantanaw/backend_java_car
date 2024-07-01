@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -30,7 +31,9 @@ public class CarModelEntity {
     CarBrandEntity marca;
     @Column(columnDefinition = "integer default 0")
     Integer deleted = 0;
-
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "timestamp_cadastro", updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    Date timestamp_cadastro;
     @OneToMany(mappedBy = "modelo")
     List<CarEntity> cars;
 
@@ -49,6 +52,8 @@ public class CarModelEntity {
                 .id(domain.id())
                 .marca(CarBrandEntity.toPersistence(domain.marca_id()))
                 .valor_fipe(domain.valor_fipe())
+                .timestamp_cadastro(new Date())
+                .deleted(0)
                 .build();
     }
 }

@@ -1,4 +1,4 @@
-package com.wswork.cars.config;
+package com.wswork.cars.config.injections;
 
 import com.wswork.cars.application.interactor.brand.*;
 import com.wswork.cars.infra.gateway.CarBrandGateway;

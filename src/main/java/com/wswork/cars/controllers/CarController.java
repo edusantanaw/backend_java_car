@@ -47,7 +47,7 @@ public class CarController {
     }
 
     @DeleteMapping(value = "{id}")
-    public ResponseEntity<String> deleteCar(@PathVariable UUID id, @RequestBody @Valid CarValidation data) throws NotFoundException {
+    public ResponseEntity<String> deleteCar(@PathVariable UUID id) throws NotFoundException {
         String message = deleteCarInteractor.delete(id);
         return ResponseEntity.status(HttpStatus.OK).body(message);
     }

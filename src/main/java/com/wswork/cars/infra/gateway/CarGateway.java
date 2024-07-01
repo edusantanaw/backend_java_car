@@ -19,7 +19,6 @@ public class CarGateway implements  CrudGateway<Car>, FindByModeloGateway<Car> {
 
     public Car create(Car data) {
         CarEntity car = CarEntity.toPersistence(data);
-        car.setDeleted(0);
         CarEntity created = repository.save(car);
         return CarEntity.toDomain(created);
     }

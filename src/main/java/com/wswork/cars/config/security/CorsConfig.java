@@ -1,4 +1,4 @@
-package com.wswork.cars.config;
+package com.wswork.cars.config.security;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
