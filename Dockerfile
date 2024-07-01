@@ -1,23 +1,16 @@
 FROM ubuntu:latest AS build
 
-RUN apt-get update && \
-    apt-get install -y openjdk-21-jdk maven
-
-WORKDIR /app
-
+RUN apt-get update
+RUN apt-get install openjdk-21-jdk -y
 COPY . .
 
+RUN apt-get install maven -y
 RUN mvn clean install
 
 FROM openjdk:21-jdk-slim
-
-WORKDIR /app
-
-COPY --from=build /app/target/car-0.0.1-SNAPSHOT.jar app.jar
-
-ENV DB_USER=${DB_USER}
-ENV DB_PASS=${DB_PASS}
-ENV DATABASE_URL=${DATABASE_URL}
+COPY --from=build /target/car-0.0.1-SNAPSHOT.jar app.jar
 
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "app.jar"]
+
+
+ENTRYPOINT [ "java", "-jar", "app.jar"]
